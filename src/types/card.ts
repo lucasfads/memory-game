@@ -1,4 +1,4 @@
-export default class Card {
+export default interface Card {
     pairId: number;
     id: number;
     content: string;
