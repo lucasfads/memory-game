@@ -41,6 +41,26 @@ export default class Board {
         if (card && !card.isFlipped && !card.isMatched) {
             card.isFlipped = true;
         }
-        return this.cards;
+
+        const flippedCards = this.cards.filter(c => c.isFlipped && !c.isMatched);
+        if (flippedCards.length === 2) {
+            const [card1, card2] = flippedCards;
+            if (card1.pairId === card2.pairId) {
+                card1.isMatched = true;
+                card2.isMatched = true;
+                this.matchedPairs++;
+                if (this.matchedPairs === this.pairsCount) {
+                    this.isGameOver = true;
+                }
+                return 1;
+            } else {
+                setTimeout(() => {
+                    card1.isFlipped = false;
+                    card2.isFlipped = false;
+                }, 1000);
+                return -1;
+            }
+        }
+        return 0;
     }
 }

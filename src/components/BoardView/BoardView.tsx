@@ -9,8 +9,13 @@ const BoardView = () => {
 
 
     const handleCardClick = (cardId: number) => {
-       board.flipCard(cardId);
-       setRenderTrigger(prev => prev + 1);
+        const matched = board.flipCard(cardId);
+        setRenderTrigger(prev => prev + 1);
+        if (matched === -1) {
+            setTimeout(() => {
+                setRenderTrigger(prev => prev + 1);
+            }, 1000);
+        }
     };
 
     return (
