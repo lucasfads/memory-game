@@ -21,4 +21,13 @@
     cursor: pointer;
     transition: transform 0.3s ease;
     color: #4f6367;
+
+    &.unflipped {
+        background-color: #f0f0f0;
+    }
+
+    &.flipped {
+        background-color: #e0f7fa;
+        transform: scale(1.05);
+    }
 }
