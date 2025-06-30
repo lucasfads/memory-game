@@ -35,4 +35,12 @@ export default class Board {
             });
         }
     }
+
+    flipCard(cardId: number) {
+        const card = this.cards.find(c => c.id === cardId);
+        if (card && !card.isFlipped && !card.isMatched) {
+            card.isFlipped = true;
+        }
+        return this.cards;
+    }
 }
