@@ -15,7 +15,7 @@ function App() {
   const [numberOfPairs, setNumberOfPairs] = useState(3);
   const [board, setBoard] = useState(() => new Board(emojiSet, numberOfPairs));
   
-  const [_renderTrigger, setRenderTrigger] = useState(0);
+  const [renderTrigger, setRenderTrigger] = useState(0);
 
   const createNewGame = () => {
     const newBoard = new Board(emojiSet, numberOfPairs);
@@ -59,7 +59,7 @@ function App() {
       </header>
       <section>
         <div className="container">
-          <BoardView board={board} onCardClick={handleCardClick}/>
+          <BoardView board={board} onCardClick={handleCardClick} key={renderTrigger}/>
         </div>
       </section>
     </>
