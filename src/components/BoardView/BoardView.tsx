@@ -3,10 +3,8 @@ import Board from '../../models/Board';
 import './BoardView.css';
 
 const BoardView = () => {
-    //const board = new Board(['A', 'B', 'C', 'D'], 4);
-    const [board, _setBoard] = useState(() => new Board(['A', 'B', 'C', 'D'], 4));
+    const [board, _setBoard] = useState(() => new Board(['🐸', '🐼', '🐞', '🦁'], 4));
     const [_renderTrigger, setRenderTrigger] = useState(0);
-
 
     const handleCardClick = (cardId: number) => {
         const matched = board.flipCard(cardId);
