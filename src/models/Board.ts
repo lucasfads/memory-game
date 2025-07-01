@@ -15,10 +15,11 @@ export default class Board {
         this.matchedPairs = 0;
         this.isGameOver = false;
 
+        const availableContents = [...contents];
         for (let i = 0; i < pairsCount; i++) {
-            const contentIndex = Math.floor(Math.random() * contents.length);
-            const content = contents[contentIndex];
-            contents.splice(contentIndex, 1);
+            const contentIndex = Math.floor(Math.random() * availableContents.length);
+            const content = availableContents[contentIndex];
+            availableContents.splice(contentIndex, 1);
             this.addPair(content, i);
         }
         this.cards.sort(() => Math.random() - 0.5);

@@ -5,11 +5,11 @@ import Board from './models/Board'
 import BoardView from './components/BoardView'
 
 function App() {
-  const [board, setBoard] = useState(() => new Board(['🐸', '🐼', '🐞', '🦁'], 4));
-  const [_renderTrigger, setRenderTrigger] = useState(0);
-
-  const [emojiSet, setEmojiSet] = useState(['🐸', '🐼', '🐞', '🦁']);
+  const [emojiSet, setEmojiSet] = useState(['🐸', '🐼', '🐞', '🦁', '🐯', '🐨', '🐰', '🦊', '🐺', '🐮', '🐷', '🐵']);
   const [numberOfPairs, setNumberOfPairs] = useState(4);
+  const [board, setBoard] = useState(() => new Board(emojiSet, numberOfPairs));
+  
+  const [_renderTrigger, setRenderTrigger] = useState(0);
 
   const createNewGame = () => {
     const newBoard = new Board(emojiSet, numberOfPairs);
