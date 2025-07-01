@@ -2,6 +2,8 @@
 
 A fun and interactive memory card game built with React and TypeScript. Test your memory by flipping cards to find matching pairs!
 
+[**Play it!**](https://lucasfads.github.io/memory-game/)
+
 ## 🎮 Features
 
 - **Multiple Difficulty Levels**: Choose from Easy (3 pairs), Medium (6 pairs), or Hard (12 pairs)
