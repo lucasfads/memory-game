@@ -1,28 +1,19 @@
-import { useState } from 'react';
 import Board from '../../models/Board';
 import './BoardView.css';
 
-const BoardView = () => {
-    const [board, _setBoard] = useState(() => new Board(['🐸', '🐼', '🐞', '🦁'], 4));
-    const [_renderTrigger, setRenderTrigger] = useState(0);
+interface BoardViewProps {
+    board: Board;
+    onCardClick: (cardId: number) => void;
+}
 
-    const handleCardClick = (cardId: number) => {
-        const matched = board.flipCard(cardId);
-        setRenderTrigger(prev => prev + 1);
-        if (matched === -1) {
-            setTimeout(() => {
-                setRenderTrigger(prev => prev + 1);
-            }, 1000);
-        }
-    };
-
+const BoardView = ({ board, onCardClick}: BoardViewProps) => {
     return (
         <div className="board">
             {board.cards.map((card) => (
                 <div
                     key={`${card.pairId}-${card.id}`}
                     className={`card ${card.isFlipped ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
-                    onClick={() => handleCardClick(card.id)}
+                    onClick={() => onCardClick(card.id)}
                 >
                    {card.isFlipped ? card.content : '?'}
                 </div>
