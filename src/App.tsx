@@ -5,8 +5,14 @@ import Board from './models/Board'
 import BoardView from './components/BoardView'
 
 function App() {
-  const [board, _setBoard] = useState(() => new Board(['🐸', '🐼', '🐞', '🦁'], 4));
+  const [board, setBoard] = useState(() => new Board(['🐸', '🐼', '🐞', '🦁'], 4));
   const [_renderTrigger, setRenderTrigger] = useState(0);
+
+  const createNewGame = () => {
+    const newBoard = new Board(['🐸', '🐼', '🐞', '🦁'], 4);
+    setBoard(newBoard);
+    setRenderTrigger(prev => prev + 1);
+  };
 
   const handleCardClick = (cardId: number) => {
       const matched = board.flipCard(cardId);
@@ -24,7 +30,7 @@ function App() {
         <div className="container">
           <h1>Memory Game</h1>
           <p>Flip the cards to find matching pairs!</p>
-          
+          <button onClick={createNewGame}>New Game</button>
         </div>
       </header>
       <section>
