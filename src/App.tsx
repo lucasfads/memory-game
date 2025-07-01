@@ -8,8 +8,11 @@ function App() {
   const [board, setBoard] = useState(() => new Board(['🐸', '🐼', '🐞', '🦁'], 4));
   const [_renderTrigger, setRenderTrigger] = useState(0);
 
+  const [emojiSet, setEmojiSet] = useState(['🐸', '🐼', '🐞', '🦁']);
+  const [numberOfPairs, setNumberOfPairs] = useState(4);
+
   const createNewGame = () => {
-    const newBoard = new Board(['🐸', '🐼', '🐞', '🦁'], 4);
+    const newBoard = new Board(emojiSet, numberOfPairs);
     setBoard(newBoard);
     setRenderTrigger(prev => prev + 1);
   };
@@ -30,6 +33,20 @@ function App() {
         <div className="container">
           <h1>Memory Game</h1>
           <p>Flip the cards to find matching pairs!</p>
+           <select onChange={(e) => setEmojiSet(JSON.parse(e.target.value))}>
+            <option value='["🐸", "🐼", "🐞", "🦁", "🐯", "🐨", "🐰", "🦊", "🐺", "🐮", "🐷", "🐵"]'>Animals</option>
+            <option value='["🍎", "🍌", "🍊", "🍇", "🍓", "🥝", "🍑", "🥭", "🍍", "🥥", "🍒", "🍉"]'>Fruits</option>
+            <option value='["⚽", "🏀", "🏈", "⚾", "🎾", "🏐", "🏓", "🏸", "🥍", "🏒", "🏑", "🎱"]'>Sports</option>
+            <option value='["🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚"]'>Vehicles</option>
+          </select>
+          <select
+            value={numberOfPairs}
+            onChange={(e) => setNumberOfPairs(Number(e.target.value))}
+          >
+            <option value="3">Easy (3 Pairs)</option>
+            <option value="6">Medium (6 Pairs)</option>
+            <option value="12">Hard (12 Pairs)</option>
+          </select>
           <button onClick={createNewGame}>New Game</button>
         </div>
       </header>

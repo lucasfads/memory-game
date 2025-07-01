@@ -8,7 +8,7 @@ export default class Board {
 
     constructor(contents: string[], pairsCount: number) {
         if (pairsCount < 1 || pairsCount > contents.length) {
-            throw new Error('Invalid pairs count');
+            throw new Error(`Invalid pairs count: ${pairsCount}. It must be between 1 and ${contents.length}.`);
         }
         this.cards = [];
         this.pairsCount = pairsCount;
