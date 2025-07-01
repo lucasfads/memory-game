@@ -19,7 +19,11 @@ const BoardView = () => {
     return (
         <div className="board">
             {board.cards.map((card) => (
-                <div key={`${card.pairId}-${card.id}`} className={`card ${card.isFlipped ? 'flipped' : 'unflipped'}`} onClick={() => handleCardClick(card.id)}>
+                <div
+                    key={`${card.pairId}-${card.id}`}
+                    className={`card ${card.isFlipped ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
+                    onClick={() => handleCardClick(card.id)}
+                >
                    {card.isFlipped ? card.content : '?'}
                 </div>
             ))}
