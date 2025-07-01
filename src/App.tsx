@@ -5,8 +5,14 @@ import Board from './models/Board'
 import BoardView from './components/BoardView'
 
 function App() {
-  const [emojiSet, setEmojiSet] = useState(['🐸', '🐼', '🐞', '🦁', '🐯', '🐨', '🐰', '🦊', '🐺', '🐮', '🐷', '🐵']);
-  const [numberOfPairs, setNumberOfPairs] = useState(4);
+  const emojiSets = {
+    animals: ["🐸", "🐼", "🐞", "🦁", "🐯", "🐨", "🐰", "🦊", "🐺", "🐮", "🐷", "🐵"],
+    fruits: ["🍎", "🍌", "🍊", "🍇", "🍓", "🥝", "🍑", "🥭", "🍍", "🥥", "🍒", "🍉"],
+    sports: ["⚽", "🏀", "🏈", "⚾", "🎾", "🏐", "🏓", "🏸", "🥍", "🏒", "🏑", "🎱"],
+    vehicles: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚"]
+  }
+  const [emojiSet, setEmojiSet] = useState(emojiSets.animals);
+  const [numberOfPairs, setNumberOfPairs] = useState(3);
   const [board, setBoard] = useState(() => new Board(emojiSet, numberOfPairs));
   
   const [_renderTrigger, setRenderTrigger] = useState(0);
@@ -34,10 +40,11 @@ function App() {
           <h1>Memory Game</h1>
           <p>Flip the cards to find matching pairs!</p>
            <select onChange={(e) => setEmojiSet(JSON.parse(e.target.value))}>
-            <option value='["🐸", "🐼", "🐞", "🦁", "🐯", "🐨", "🐰", "🦊", "🐺", "🐮", "🐷", "🐵"]'>Animals</option>
-            <option value='["🍎", "🍌", "🍊", "🍇", "🍓", "🥝", "🍑", "🥭", "🍍", "🥥", "🍒", "🍉"]'>Fruits</option>
-            <option value='["⚽", "🏀", "🏈", "⚾", "🎾", "🏐", "🏓", "🏸", "🥍", "🏒", "🏑", "🎱"]'>Sports</option>
-            <option value='["🚗", "🚕", "🚙", "🚌", "🚎", "🏎️", "🚓", "🚑", "🚒", "🚐", "🛻", "🚚"]'>Vehicles</option>
+            { Object.entries(emojiSets).map(([key, emojis]) => (
+              <option key={key} value={JSON.stringify(emojis)}>
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </option>
+            )) }
           </select>
           <select
             value={numberOfPairs}
