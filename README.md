@@ -108,7 +108,7 @@ The project uses modern development tools:
 
 ## 👨‍💻 Author
 
-Developed with by [Lucas Fads](https://lucasfads.com/)
+Developed by [Lucas Fads](https://lucasfads.com/)
 
 ---
 
