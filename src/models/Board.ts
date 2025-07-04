@@ -61,6 +61,8 @@ export default class Board {
                 }, 1000);
                 return -1;
             }
+        } else if (flippedCards.length > 2) {
+            flippedCards.forEach(c => c.isFlipped = false);
         }
         return 0;
     }
